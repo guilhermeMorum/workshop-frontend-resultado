@@ -32,9 +32,15 @@ angular.module('workshop')
 		fourth: {
 			color1: '#FF0266',
 			color2: '#0099FF',
-			color3: '#FF0266',
-			color4: '#0099FF'
+			color3: '#FF9900',
+			color4: '#0099FF',
+			color5: '#FF0266',
+			color6: '#0099FF'
 		}
+	};
+
+	vm.functions = {
+		calc: 'calc(100% - 300px)'
 	};
 
 }]);

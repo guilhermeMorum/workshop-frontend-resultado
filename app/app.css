@@ -147,6 +147,8 @@ h3 {
 	background-color: #c4e4bd;
 	margin: 20px;
 	padding: 10px;
+	background-size: cover;
+	background-position: center;
 }
 
 .box > h3 {
@@ -215,10 +217,60 @@ ul {
 
 #resize-button {
 	color: #FFF;
-	position: absolute;
+	position: fixed;
 	z-index: 2;
-	top: 213px;
-	left: 20px;
+	top: 100px;
+	left: calc(50% - 550px);
+	background-color: #FF0266;
+	padding: 10px;
+	transform: translateX(-50%);
+	border-radius: 100%;
+	z-index: 5000;
+	overflow: hidden;
+	width: 40px;
+	height: 40px;
+	transition: all 0.2s;
+	cursor: pointer;
+}
+
+#resize-button:not(.open){
+	animation: slide-down 0.5s;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	left: calc(50% - 610px);
+}
+
+@keyframes slide-down {
+	0% {
+		top: 0px;
+	}
+	100% {
+		top: 100px;
+	}
+}
+
+#resize-button * {
+	opacity: 0;
+	cursor: pointer;
+}
+
+#resize-button.open {
+	position: absolute;
+	top: 204px;
+}
+
+#resize-button:hover *,
+#resize-button.open * {
+	opacity: 1;
+	transition: all 0.3s;
+	transition-delay: 0.2s;
+}
+
+#resize-button:hover,
+#resize-button.open {
+	width: 132px;
+	height: 42px;
+	border-radius: 20px;
+	left: calc(50% - 550px);
 }
 
 .box-title {
@@ -439,13 +491,14 @@ ul {
 .chips {
 	display: flex;
 	justify-content: center;
+	flex-flow: wrap;
 }
 
 .chips li {
 	padding: 10px 20px;
 	background-color: #F90;
 	flex-basis: 100px;
-	margin: 0 20px;
+	margin: 20px;
 	text-align: center;
 	color: #FFF;
 	font-size: 18px;
@@ -534,4 +587,21 @@ ul {
 
 .align-center {
 	text-align: center;
+}
+
+.small-text {
+	font-size: 16px;
+}
+
+.lower {
+	text-transform: none !important;
+}
+
+.bg-grey {
+	background-color: #EEE;
+	margin-left: 20px;
+}
+
+.bg-grey .box {
+	margin: 0;
 }

@@ -23,12 +23,27 @@
 	</div>
 	<h1 class="hyper-title box-title" text="• Seletores •">• Seletores •</h1>
 	<ul class="chips code">
+		<li>*</li>
+		<li>element</li>
 		<li>#id</li>
 		<li>.class</li>
-		<li>element</li>
 		<li>[attribute]</li>
 		<li>:<u>special</u></li>
 	</ul>
+	<div class="code-box">
+		<h3>element (tag)</h3>
+		<ol class="content">
+			<li><div>p {</div></li>
+			<li><div><div>color: <input type="text" ng-model="p.color" maxlength="7">;</div></div></li>
+			<li><div><div>font-size: <input type="text" ng-model="p.size" maxlength="7">;</div></div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<div class="example code" layout="row">
+		<p style="color: {{p.color}}; font-size: {{p.size}};">
+			Um parágrafo qualquer;
+		</p>
+	</div>
 	<div class="code-box">
 		<h3>#id</h3>
 		<ol class="content">
@@ -50,24 +65,24 @@
 			<li><div>}</div></li>
 		</ol>
 	</div>
-	<div class="example" layout="row">
-		<div class="box simple-box code" ng-repeat="box in [1,2,3,4,5]" style="background-color: {{caixas}};">
+	<style>
+		#classes .caixa {
+			background-color: {{caixas}};
+		}
+	</style>
+	<div class="example" layout="row" id="classes">
+		<div class="box simple-box code caixa">
 			.caixa
 		</div>
-	</div>
-	<div class="code-box">
-		<h3>element</h3>
-		<ol class="content">
-			<li><div>p {</div></li>
-			<li><div><div>color: <input type="text" ng-model="p.color" maxlength="7">;</div></div></li>
-			<li><div><div>font-size: <input type="text" ng-model="p.size" maxlength="7">;</div></div></li>
-			<li><div>}</div></li>
-		</ol>
-	</div>
-	<div class="example code" layout="row">
-		<p style="color: {{p.color}}; font-size: {{p.size}};">
-			Um parágrafo qualquer;
-		</p>
+		<div class="box simple-box code circle caixa">
+			.caixa
+		</div>
+		<div class="box simple-box code caixa">
+			.caixa
+		</div>
+		<div class="box simple-box code circle caixa">
+			.caixa
+		</div>
 	</div>
 	<div class="code-box">
 		<h3>[attribute]</h3>
@@ -75,15 +90,56 @@
 			<li><div>[ng-click] {</div></li>
 			<li><div><div>cursor: pointer;</div></div></li>
 			<li><div>}</div></li>
+			<li><div>[bgBlue] {</div></li>
+			<li><div><div>background-color: #0099FF;</div></div></li>
+			<li><div>}</div></li>
+			<li><div>[bold] {</div></li>
+			<li><div><div>color: red;</div></div></li>
+			<li><div>}</div></li>
+			<li><div>[disabled] {</div></li>
+			<li><div><div>opacity: 0.7;</div></div></li>
+			<li><div>}</div></li>
+			<li><div>[name="caixa"] {</div></li>
+			<li><div><div>background-color: #FF0266;</div></div></li>
+			<li><div>}</div></li>
 		</ol>
 	</div>
-	<div class="example code" layout="row">
-		<div class="box simple-box code" ng-click="" style="cursor: pointer">
-			[ng-click]
+	<style>
+		#attributes [ng-click] {
+			cursor: pointer;
+		}
+		#attributes [bgBlue] {
+			background-color: #09f;
+		}
+		#attributes [bold] {
+			font-weight: bold;
+		}
+		#attributes [disabled] {
+			opacity: 0.7;
+		}
+		#attributes [name="caixa"] {
+			background-color: #FF0266;
+		}
+	</style>
+	<div class="example code" layout="row" id="attributes">
+		<div class="box simple-box code" ng-click="" name="caixa">
+			[ng-click][name="caixa"]
+		</div>
+		<div class="box simple-box code" bgBlue>
+			[bgBlue]
+		</div>
+		<div class="box simple-box code" bold name="bloco">
+			[bold][name="bloco"]
+		</div>
+		<div class="box simple-box code" disabled>
+			[disabled]
+		</div>
+		<div class="box simple-box code" name="caixa" bold="false">
+			[name="caixa"][bold="false"]
 		</div>
 	</div>
 	<div class="code-box">
-		<h3>:special</h3>
+		<h3>:special (estado) <span class="small-text red">[:hover, :focus, :active, :checked, :valid ...]</span></h3>
 		<ol class="content">
 			<li><div>.caixa:hover {</div></li>
 			<li><div><div>background-color: <input type="text" ng-model="box.hover" maxlength="7">;</div></div></li>
@@ -207,6 +263,13 @@
 		<div>Eu sou um <i><b>robô</b></i></div>
 		<i>&lt;div&gt;Eu sou um &lt;i&gt;&lt;b&gt;robô&lt;/b&gt;&lt;/i&gt;&lt;/div&gt;</i>
 	</div>
+	<h1 class="hyper-title" text="Combinators & Buried Selectors">Combinators & Buried Selectors</h1>
+	<ul class="chips code">
+		<li><b>_</b></li>
+		<li><b>&gt;</b></li>
+		<li><b>+</b></li>
+		<li><b>~</b></li>
+	</ul>
 	<div class="code-box">
 		<h3>selector + selector <span class="red">&amp;</span> selector ~ selector</h3>
 		<ol class="content">
@@ -216,12 +279,6 @@
 			<li><div>#segundo .caixa ~ .caixa {</div></li>
 			<li><div><div>background-color: <input type="text" ng-model="combining.fourth.color2" maxlength="7">;</div></div></li>
 			<li><div>}</div></li>
-			<li><div>#terceiro .caixa:hover + .caixa {</div></li>
-			<li><div><div>background-color: <input type="text" ng-model="combining.fourth.color3" maxlength="7">;</div></div></li>
-			<li><div>}</div></li>
-			<li><div>#quarto .caixa:hover ~ .caixa {</div></li>
-			<li><div><div>background-color: <input type="text" ng-model="combining.fourth.color4" maxlength="7">;</div></div></li>
-			<li><div>}</div></li>
 		</ol>
 	</div>
 	<style>
@@ -230,12 +287,6 @@
 		}
 		#example4 .caixa ~ .caixa {
 			background-color: {{combining.fourth.color2}};
-		}
-		#example5 .caixa:hover + .caixa {
-			background-color: {{combining.fourth.color3}};
-		}
-		#example6 .caixa:hover ~ .caixa {
-			background-color: {{combining.fourth.color4}};
 		}
 	</style>
 	<h3 class="align-center">#primeiro</h3>
@@ -268,8 +319,60 @@
 			.caixa
 		</div>
 	</div>
-	<h3 class="align-center">#terceiro</h3>
-	<div class="example code" layout="row" id="example5">
+	<div class="code-box">
+		<h3>buried :hover</h3>
+		<ol class="content">
+			<li><div><span class="red">ul:hover</span> li {</div></li>
+			<li><div><div>color: <input type="text" ng-model="combining.fourth.color3" maxlength="7">;</div></div></li>
+			<li><div>}</div></li>
+			<li><div>ul <span class="red">li:hover</span> {</div></li>
+			<li><div><div>color: <input type="text" ng-model="combining.fourth.color4" maxlength="7">;</div></div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		#example6 ul {
+			font-size: 20px;
+			width: 200px;
+			padding: 20px;
+			border: 1px solid #DDD;
+			margin: 0 auto;
+		}
+		#example6 ul:hover li {
+			color: {{combining.fourth.color3}};
+		}
+		#example6 ul li:hover {
+			color: {{combining.fourth.color4}};
+		}
+	</style>
+	<div class="example code" id="example6">
+		<ul>
+			<li>Morango</li>
+			<li>Laranja</li>
+			<li>Abacaxi</li>
+		</ul>
+	</div>
+	<div class="code-box">
+		<h3>selector + selector <span class="red">&amp;</span> selector ~ selector</h3>
+		<ol class="content">
+			<li><div>#primeiro .caixa:hover + .caixa {</div></li>
+			<li><div><div>background-color: <input type="text" ng-model="combining.fourth.color5" maxlength="7">;</div></div></li>
+			<li><div>}</div></li>
+			<li><div>#segundo .caixa:hover ~ .caixa {</div></li>
+			<li><div><div>background-color: <input type="text" ng-model="combining.fourth.color6" maxlength="7">;</div></div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		#example7 .caixa:hover + .caixa {
+			background-color: {{combining.fourth.color5}};
+		}
+		#example8 .caixa:hover ~ .caixa {
+			background-color: {{combining.fourth.color6}};
+		}
+	</style>
+	<h3 class="align-center">#primeiro</h3>
+	<div class="example code" layout="row" id="example7">
 		<div class="box simple-box code caixa">
 			.caixa
 		</div>
@@ -283,8 +386,8 @@
 			.caixa
 		</div>
 	</div>
-	<h3 class="align-center">#quarto</h3>
-	<div class="example code" layout="row" id="example6">
+	<h3 class="align-center">#segundo</h3>
+	<div class="example code" layout="row" id="example8">
 		<div class="box simple-box code caixa">
 			.caixa
 		</div>
@@ -297,7 +400,81 @@
 		<div class="box simple-box code caixa">
 			.caixa
 		</div>
+	</div>
+	<h1 class="hyper-title box-title" text="• Pseudo Elementos •">• Pseudo Elementos •</h1>
+	<ul class="chips code">
+		<li>::after</li>
+		<li>::before</li>
+		<li>::first-letter</li>
+	</ul>
+	<div class="code-box">
+		<h3>::first-letter</h3>
+		<ol class="content">
+			<li><div>p::first-letter {</div></li>
+			<li><div><div>color: #333;</div></li>
+			<li><div><div>font-weight: bold;</div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		#pseudo1 p::first-letter {
+			color: #333;
+			font-weight: bold;
+			font-size: 150%;
+		}
+	</style>
+	<div class="example" layout="row" id="pseudo1">
+		<p>Coisinha</p>
 	</div>
 	<h1 class="hyper-title box-title" text="• Funções •">• Funções •</h1>
+	<ul class="chips code">
+		<li>url()</li>
+		<li>calc()</li>
+		<li>attr()</li>
+	</ul>
+	<div class="code-box">
+		<h3>url()</h3>
+		<ol class="content">
+			<li><div>.iron-man {</div></li>
+			<li><div><div>background-image: url('../assets/iron.jpg');</div></li>
+			<li><div>}</div></li>
+			<li><div>.flash {</div></li>
+			<li><div><div>background-image: url('../assets/flash.jpg');</div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		.iron-man {
+			background-image: url('../assets/iron.jpg')
+		}
+		.flash {
+			background-image: url('../assets/flash.jpg')
+		}
+	</style>
+	<div class="example" layout="row">
+		<div class="box simple-box code iron-man">
+		</div>
+		<div class="box simple-box code flash">
+		</div>
+	</div>
+	<div class="code-box">
+		<h3>calc()</h3>
+		<ol class="content">
+			<li><div>.right-spaced {</div></li>
+			<li><div><div>width: <input type="text" ng-model="functions.calc" class="lower">;</div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		.right-spaced {
+			width: {{functions.calc}};
+		}
+	</style>
+	<div class="example" style="padding-right: 20px;">
+		<div class="bg-grey">
+			<div class="box simple-box code right-spaced">
+			</div>
+		</div>
+	</div>
 	<h1 class="hyper-title box-title" text="• FlexBox •">• FlexBox •</h1>
 </div>
