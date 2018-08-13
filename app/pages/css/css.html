@@ -21,7 +21,7 @@
 			<label for="animation" class="item-box order3" id="animation-button"><i class="fa fa-video"></i></label>
 		</div>
 	</div>
-	<h1 class="hyper-title box-title" text="• Seletores •">• Seletores •</h1>
+	<h1 class="hyper-title box-title" text="Seletores">Seletores</h1>
 	<ul class="chips code">
 		<li>*</li>
 		<li>element</li>
@@ -35,13 +35,13 @@
 		<ol class="content">
 			<li><div>p {</div></li>
 			<li><div><div>color: <input type="text" ng-model="p.color" maxlength="7">;</div></div></li>
-			<li><div><div>font-size: <input type="text" ng-model="p.size" maxlength="7">;</div></div></li>
+			<li><div><div>font-size: <input type="text" ng-model="p.size" maxlength="7" class="lower">;</div></div></li>
 			<li><div>}</div></li>
 		</ol>
 	</div>
 	<div class="example code" layout="row">
 		<p style="color: {{p.color}}; font-size: {{p.size}};">
-			Um parágrafo qualquer;
+			Um parágrafo qualquer
 		</p>
 	</div>
 	<div class="code-box">
@@ -401,8 +401,8 @@
 			.caixa
 		</div>
 	</div>
-	<h1 class="hyper-title box-title" text="• Pseudo Elementos •">• Pseudo Elementos •</h1>
-	<ul class="chips code">
+	<h1 class="hyper-title box-title" text="Pseudo Elementos">Pseudo Elementos</h1>
+	<ul class="chips code no-basis no-grow">
 		<li>::after</li>
 		<li>::before</li>
 		<li>::first-letter</li>
@@ -411,25 +411,78 @@
 		<h3>::first-letter</h3>
 		<ol class="content">
 			<li><div>p::first-letter {</div></li>
-			<li><div><div>color: #333;</div></li>
+			<li><div><div>color: <input type="text" ng-model="pseudo.first.color1" maxlength="7">;</div></li>
 			<li><div><div>font-weight: bold;</div></li>
 			<li><div>}</div></li>
 		</ol>
 	</div>
 	<style>
 		#pseudo1 p::first-letter {
-			color: #333;
+			color: {{pseudo.first.color1}};
 			font-weight: bold;
 			font-size: 150%;
 		}
+
+		#pseudo1 p {
+			font-family: 'Times New Roman', serif;
+			font-size: 20px;
+		}
 	</style>
 	<div class="example" layout="row" id="pseudo1">
-		<p>Coisinha</p>
+		<p>Um parágrafo qualquer</p>
 	</div>
-	<h1 class="hyper-title box-title" text="• Funções •">• Funções •</h1>
+	<div class="code-box">
+		<h3>::after</h3>
+		<ol class="content">
+			<li><div>li.checked::after {</div></li>
+			<li><div><div>content: " - concluído";</div></li>
+			<li><div><div>color: green;</div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		#pseudo2 ul {
+			text-align: left;
+			list-style-type: disc;
+		}
+		#pseudo2 li.checked::after {
+			content: " - concluído";
+			color: green;
+		}
+	</style>
+	<div class="example code" layout="row" id="pseudo2">
+		<ul>
+			<li class="checked">Fazer compras</li>
+			<li>Limpar a casa</li>
+			<li class="checked">Trocar as lâmpadas</li>
+			<li>Fazer a janta</li>
+		</ul>
+	</div>
+	<div class="code-box">
+		<h3>::before</h3>
+		<ol class="content">
+			<li><div>p.obs::before {</div></li>
+			<li><div><div>content: "Obs: ";</div></li>
+			<li><div><div>color: red;</div></li>
+			<li><div><div>text-weight: bold;</div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		#pseudo3 p.obs::before {
+			content: "Obs: ";
+			color: red;
+			font-weight: bold;
+		}
+	</style>
+	<div class="example code" layout="row" id="pseudo3">
+		<p class="obs">Uma oservação qualquer</p>
+	</div>
+	<h1 class="hyper-title box-title" text="Funções">Funções</h1>
 	<ul class="chips code">
 		<li>url()</li>
 		<li>calc()</li>
+		<li>rgba()</li>
 		<li>attr()</li>
 	</ul>
 	<div class="code-box">
@@ -470,11 +523,195 @@
 			width: {{functions.calc}};
 		}
 	</style>
-	<div class="example" style="padding-right: 20px;">
+	<div class="example">
 		<div class="bg-grey">
 			<div class="box simple-box code right-spaced">
 			</div>
 		</div>
 	</div>
-	<h1 class="hyper-title box-title" text="• FlexBox •">• FlexBox •</h1>
+	<div class="code-box">
+		<h3>attr()</h3>
+		<ol class="content">
+			<li><div>[descricao]::after {</div></li>
+			<li><div><div>content: attr(descricao);</div></li>
+			<li><div><div>color: #555555;</div></li>
+			<li><div><div>margin-left: 7px;</div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		#func3 ul {
+			text-align: left;
+			list-style-type: disc;
+		}
+		#func3 [descricao]::after {
+			content: attr(descricao);
+			margin-left: 7px;
+			color: #555555;
+		}
+	</style>
+	<div class="example code" layout="row" id="func3">
+		<ul>
+			<li descricao="fruta">Acabate</li>
+			<li descricao="cor">Laranja</li>
+			<li descricao="objeto">Lâmpada</li>
+		</ul>
+	</div>
+	<h1 class="hyper-title box-title" text="FlexBox">FlexBox</h1>
+	<div class="code-box">
+		<h3>display: flex</h3>
+		<ol class="content">
+			<li><div>.flex-parent {</div></li>
+			<li><div><div>display: <input type="text" ng-model="flex.first.display" class="lower">;</div></li>
+			<li><div><div>background-color: #DDD;</div></li>
+			<li><div>}</div></li>
+			<li><div>.flex-item {</div></li>
+			<li><div><div>padding: 20px;</div></li>
+			<li><div><div>margin: 20px;</div></li>
+			<li><div><div>background-color: #FF0266;</div></li>
+			<li><div><div>color: #FFF;</div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		[id^="flex"].flex-parent {
+			display: {{flex.first.display}};
+			background-color: #DDD;
+		}
+		[id^="flex"] .flex-item {
+			padding: 20px;
+			margin: 20px;
+			background-color: #FF0266;
+			color: #FFF;
+		}
+	</style>
+	<div class="example code">
+		<div class="flex-parent" id="flex1">
+			<div class="flex-item">
+				.flex-item1
+			</div>
+			<div class="flex-item">
+				.flex-item2
+			</div>
+			<div class="flex-item">
+				.flex-item3
+			</div>
+		</div>
+	</div>
+	<div class="code-box">
+		<h3 layout="row">
+			<span flex="30">flex-direction</span>
+			<ul flex="70" class="chips code no-basis">
+				<li>row</li>
+				<li>row-reverse</li>
+				<li>column</li>
+				<li>column-reverse</li>
+			</ul>
+		</h3>
+		<ol class="content">
+			<li><div>.flex-parent {</div></li>
+			<li><div><div>display: flex;</div></li>
+			<li><div><div>flex-direction: <input type="text" ng-model="flex.second.direction" class="lower">;</div></li>
+			<li><div>}</div></li>
+			<li><div>.flex-item {</div></li>
+			<li><div><div>order: 1;</div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		#flex2.flex-parent {
+			flex-direction: {{flex.second.direction}};
+		}
+	</style>
+	<div class="example code">
+		<div class="flex-parent" id="flex2">
+			<div class="flex-item" ng-repeat="item in flex.second.item track by $index" style="order: {{flex.second.item[$index].order}}; border-bottom: 5px solid {{flex.second.item[$index].border}};">
+				.flex-item<input type="text" maxlength="2" ng-model="flex.second.item[$index].order" class="disguised">
+			</div>
+		</div>
+	</div>
+	<div class="code-box">
+		<h3 layout="row">
+			<span flex="30">flex-wrap</span>
+			<ul flex="70" class="chips code no-basis">
+				<li>nowrap</li>
+				<li>wrap</li>
+				<li>wrap-reverse</li>
+			</ul>
+		</h3>
+		<ol class="content">
+			<li><div>.flex-parent {</div></li>
+			<li><div><div>display: flex;</div></li>
+			<li><div><div>flex-wrap: <input type="text" ng-model="flex.third.wrap" class="lower">;</div></li>
+			<li><div>}</div></li>
+			<li><div>.flex-item {</div></li>
+			<li><div><div>flex-grow: 0;</div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		#flex3.flex-parent {
+			flex-wrap: {{flex.third.wrap}};
+		}
+	</style>
+	<div class="example code">
+		<div class="flex-parent" id="flex3">
+			<div class="flex-item" ng-repeat="item in flex.third.item track by $index" style="flex-grow: {{flex.third.item[$index].grow}}">
+				flex-grow:<input type="text" maxlength="2" ng-model="flex.third.item[$index].grow" class="disguised">
+			</div>
+		</div>
+	</div>
+	<div class="code-box">
+		<h3 layout="row">
+			<span flex="30">justify-content</span>
+			<ul flex="70" class="chips code no-basis">
+				<li>flex-start</li>
+				<li>flex-end</li>
+				<li>center</li>
+				<li>space-between</li>
+				<li>space-around</li>
+				<li>space-evenly</li>
+			</ul>
+		</h3>
+		<ol class="content">
+			<li><div>.flex-parent {</div></li>
+			<li><div><div>display: flex;</div></li>
+			<li><div><div>flex-wrap: <input type="text" ng-model="flex.fourth.wrap" class="lower">;</div></li>
+			<li><div><div>justify-content: <input type="text" ng-model="flex.fourth.justifyContent" class="lower">;</div></li>
+			<li><div>}</div></li>
+			<li><div>.flex-item {</div></li>
+			<li><div><div>flex-basis: 200px;</div></li>
+			<li><div><div>flex-shrink: <input type="text" ng-model="flex.fourth.shrink" class="lower">;</div></li>
+			<li><div><div>align-self: <input type="text" ng-model="flex.fourth.alignSelf" class="lower">;</div></li>
+			<li><div>}</div></li>
+		</ol>
+	</div>
+	<style>
+		#flex4.flex-parent {
+			flex-wrap: {{flex.fourth.wrap}};
+			justify-content: {{flex.fourth.justifyContent}};
+		}
+
+		#flex4 .flex-item {
+			flex-shrink: {{flex.fourth.shrink}};
+			align-self: {{flex.fourth.alignSelf}};
+		}
+	</style>
+	<div class="example code">
+		<div class="flex-parent" id="flex4">
+			<div class="flex-item" ng-repeat="item in flex.fourth.item track by $index" style="flex-basis: {{flex.fourth.item[$index].basis}};">
+				flex-basis:<input type="text" maxlength="5" ng-model="flex.fourth.item[$index].basis" class="disguised big">
+			</div>
+		</div>
+	</div>
+	<h1 class="hyper-title" text="Links Úteis">Links Úteis</h1>
+	<div class="example code">
+		<ul style="text-align: left; line-height: 200%;">
+			<li>CSS - referência completa: <a target="_blank" href="https://www.w3schools.com/css/">https://www.w3schools.com/css/</a></li>
+			<li>A Complete Guide to FlexBox: <a target="_blank" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a></li>
+			<li>A Complete Guide to Grid: <a target="_blank" href="https://css-tricks.com/snippets/css/complete-guide-grid/">https://css-tricks.com/snippets/css/complete-guide-grid/</a></li>
+			<li>Little CSS Stuff Newcomers Get Confused About: <a target="_blank" href="https://css-tricks.com/little-css-stuff-newcomers-get-confused-about/">https://css-tricks.com/little-css-stuff-newcomers-get-confused-about/</a></li>
+			<li>CSS Specificity: Things You Should Know: <a target="_blank" href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/</a></li>
+		</ul>
+	</div>
 </div>

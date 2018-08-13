@@ -111,6 +111,7 @@ h3 {
 	left: 50%;
 	width: 100%;
 	display: block;
+	text-align: center;
 }
 
 .hyper-title:before {
@@ -278,8 +279,10 @@ ul {
 	padding: 60px;
 	background-color: #EEE;
 	margin: -20px;
-	border-radius: 20px;
+	border-radius: 20px 20px 0 0;
 	margin-bottom: 40px;
+	border-bottom: 1px solid #FFF;
+	box-shadow: 0 1px 0 #CCC;
 }
 
 .box-title:not(:first-of-type){
@@ -332,6 +335,27 @@ ul {
 	z-index: 1;
 	transform: translate(-50%, -50%);
 	border-radius: 100%;
+}
+
+.item-box > span {
+	background-color: rgba(0,0,0,0.5);
+	display: block;
+	position: absolute;
+	padding: 10px;
+	width: 100%;
+	color: #FFF;
+	z-index: 5000;
+	text-align: center;
+	font-family: 'Times New Roman', serif;
+	font-size: 22px;
+}
+
+.item-box.with-header {
+	height: 246px;
+}
+
+.item-box.with-header i {
+	transform: translate(-50%, calc(-50% + 23px));
 }
 
 .item-box.order2:after {
@@ -433,8 +457,30 @@ ul {
 }
 
 #style:checked ~ * > #style-button:after {
-	width: 150%;
-	height: 150%;
+	width: 300px;
+	height: 300px;
+}
+
+:checked + .item-box i,
+:checked + * > .item-box i {
+	color: #FFF;
+}
+
+:checked + .item-box:after,
+:checked + * > .item-box:after {
+	width: 350px;
+	height: 350px;
+}
+
+:checked + .item-box.with-header:after,
+:checked + * > .item-box.with-header:after {
+	width: 350px;
+	height: 350px;
+}
+
+:checked + #style-button:after {
+	width: 300px;
+	height: 300px;
 }
 
 #style:checked ~ * > #style-button i {
@@ -442,8 +488,8 @@ ul {
 }
 
 #color:checked ~ * > #color-button:after {
-	width: 150%;
-	height: 150%;
+	width: 300px;
+	height: 300px;
 }
 
 #color:checked ~ * > #color-button i {
@@ -451,8 +497,8 @@ ul {
 }
 
 #layout:checked ~ * > #layout-button:after {
-	width: 150%;
-	height: 150%;
+	width: 300px;
+	height: 300px;
 }
 
 #layout:checked ~ * > #layout-button i {
@@ -460,8 +506,8 @@ ul {
 }
 
 #animation:checked ~ * > #animation-button:after {
-	width: 150%;
-	height: 150%;
+	width: 300px;
+	height: 300px;
 }
 
 #animation:checked ~ * > #animation-button i {
@@ -569,8 +615,15 @@ ul {
 	margin-bottom: 40px;
 	border-bottom: 1px solid #DDD;
 	justify-content: center;
+	margin: auto 40px;
 	flex-wrap: wrap;
 	text-align: center;
+	overflow-x: auto;
+}
+
+.example:last-of-type {
+	margin-bottom: 0;
+	border-bottom: none;
 }
 
 .example * {
@@ -599,9 +652,94 @@ ul {
 
 .bg-grey {
 	background-color: #EEE;
-	margin-left: 20px;
 }
 
 .bg-grey .box {
 	margin: 0;
+}
+
+.no-basis,
+.no-basis > li {
+	flex-basis: auto;
+	flex-grow: 1;
+}
+
+.no-grow,
+.no-grow > li {
+	flex-grow: 0;
+}
+
+.code-box .chips {
+	margin: -10px 0;
+}
+
+.code-box .chips li {
+	margin:10px;
+	font-size: 16px;
+}
+
+.code-box > h3 > span[flex="30"] {
+	align-self: center;
+}
+
+.disguised {
+	display: inline;
+	background-color: transparent;
+	width: 22px;
+	border: none;
+	color: inherit;
+	text-decoration: underline;
+}
+
+.disguised.big {
+	width: 50px;
+}
+
+.quote {
+	margin: 80px 10%;
+	letter-spacing: normal;
+	text-align: center;
+	font-weight: normal;
+}
+
+.quote:before,
+.quote:after {
+	color: #555;
+}
+
+.quote:before {
+	content: "❝";
+}
+
+.quote:after {
+	content: "❞";
+}
+
+.quote + .ref {
+	margin-top: -50px;
+	margin-bottom: 80px;
+}
+
+.ref {
+	text-align: center;
+	display: block;
+}
+
+.ref,
+.ref > a {
+	color: #555;
+}
+
+img.align-center {
+	margin: 40px auto;
+	display: block;
+}
+
+img {
+	max-width: 100%;
+}
+
+.default-margin {
+	margin-top: 40px;
+	margin-bottom: 40px;
 }

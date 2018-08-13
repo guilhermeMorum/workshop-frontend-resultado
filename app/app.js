@@ -16,6 +16,10 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
             templateUrl : 'pages/css/css.html',
             controller  : 'CssCtrl'
         })
+  .when('/material', {
+            templateUrl : 'pages/material/material.html',
+            controller  : 'MaterialCtrl'
+        })
   .otherwise({redirectTo: '/home'});
   $locationProvider.hashPrefix('');
 
