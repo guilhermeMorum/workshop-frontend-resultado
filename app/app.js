@@ -4,26 +4,9 @@ angular.module('workshop', [
   'ngRoute',
   'ngMaterial',
   'ngAnimate'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+]);
 
-  $routeProvider
-  .when('/home', {
-            templateUrl : 'pages/home/home.html',
-            controller  : 'HomeCtrl'
-        })
-  .when('/css', {
-            templateUrl : 'pages/css/css.html',
-            controller  : 'CssCtrl'
-        })
-  .when('/material', {
-            templateUrl : 'pages/material/material.html',
-            controller  : 'MaterialCtrl'
-        })
-  .otherwise({redirectTo: '/home'});
-  $locationProvider.hashPrefix('');
-
-}]);
+var app = angular.module('workshop');
 
 window.onscroll = function changeNav(){
     var navBar = document.getElementById('resize-button'),

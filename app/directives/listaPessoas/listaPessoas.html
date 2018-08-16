@@ -1,0 +1,52 @@
+<style type="text/css">
+	table {
+		background-color: #EEE;
+		border-collapse: collapse;
+	}
+	thead {
+		background-color: #CCC;
+		border-bottom: 1px solid #999;
+	}
+	thead th {
+		padding: 10px;
+	}
+	td {
+		padding: 10px;
+	}
+	tr:nth-of-type(odd){
+		background-color: #DDD;
+	}
+</style>
+
+<div layout="column">
+	<md-button ng-href="#/cadastrar" class="md-raised">
+		Novo
+	</md-button>
+	<md-input-container>
+		<label>Pesquisar</label>
+		<input type="text" ng-model="pesquisar">
+	</md-input-container>
+</div>
+<table width="100%" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Nome</th>
+			<th>RG</th>
+			<th>E-Mail</th>
+			<th>Ações</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="pessoa in pessoas | filter: pesquisar">
+			<td>{{pessoa.id}}</td>
+			<td>{{pessoa.nome}}</td>
+			<td>{{pessoa.rg}}</td>
+			<td>{{pessoa.email}}</td>
+			<td width="20%">
+				<md-button ng-click="editar(pessoa)">Editar</md-button>
+				<md-button ng-click="deletar(pessoa.id, $index)">Excluir</md-button>
+			</td>
+		</tr>
+	</tbody>
+</table>

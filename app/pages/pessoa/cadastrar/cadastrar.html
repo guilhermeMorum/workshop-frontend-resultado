@@ -1,0 +1,23 @@
+<h1 class="hyper-title"  text="Cadastro de Pessoas">Cadastro de Pessoas</h1>
+
+<form layout="column" novalidate>
+	<md-input-container ng-if="pessoa.id">
+		<label>Id</label>
+		<input type="text" ng-model="pessoa.id" disabled>
+	</md-input-container>
+	<md-input-container>
+		<label>Nome</label>
+		<input type="text" ng-model="pessoa.nome">
+	</md-input-container>
+	<md-input-container>
+		<label>E-Mail</label>
+		<input type="email" ng-model="pessoa.email">
+	</md-input-container>
+	<md-input-container>
+		<label>RG</label>
+		<input type="text" ng-model="pessoa.rg">
+	</md-input-container>
+	<md-button ng-click="enviar()">
+		Enviar
+	</md-button>
+</form>
